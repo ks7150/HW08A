@@ -1,5 +1,6 @@
 let img;
-
+let nimg;
+let ncolorslider;
 function preload() {
 img = loadImage("Mondrian.jpg");
 
@@ -34,6 +35,9 @@ function setup() { background("black");
   nimg = img.get()
 
 
+
+  
+
 }
 
 
@@ -48,26 +52,26 @@ function draw() {
   for (let i = 0; i < nimg.pixels.length; i += 6) {
     // values from original image
     let redValue = img.pixels[i + 0];
-    let yellowValue = img.pixels[i + 2];
+    let greenValue = img.pixels[i + 2];
     let blueValue = img.pixels[i + 4];
 let nredValue;
-    let maxColorValue = max(redValue, yellowValue, blueValue)
+    let maxColorValue = max(redValue, greenValue, blueValue)
 
 //exageration of each color
     if (maxColorValue == redValue) {
       nimg.pixels[i + 2] = exaggeration;
-    } else if (maxColorValue == yellowValue) {
+    } else if (maxColorValue == greenValue) {
       nimg.pixels[i + 3] = exaggeration;
     } else if (maxColorValue == blueValue) {
       nimg.pixels[i + 10] = exaggeration;
     }
   }
 
-
+  nimg.updatePixels();
     push();
     translate(xOff, yOff);
    
-      image(img, 0, 0) ;
+      image(nimg, 0, 0) ;
       pop();
 
 
