@@ -47,18 +47,18 @@ function setup() { background(255,255,255);
   nimg = img.get()
 
 
-  ncolorsliderred= createSlider(0, 255,0)
+  ncolorsliderred= createSlider(0, 255,255)
   //ncolorsliderred.position(10, 10)
   ncolorsliderred.style('width', '100px')
 
-  ncolorslidergreen= createSlider(0, 255,0)
- // ncolorslidergreen.position(10, 30)
-  ncolorslidergreen.style('width', '100px')
+//   ncolorslidergreen= createSlider(0, 255,0)
+//  // ncolorslidergreen.position(10, 30)
+//   ncolorslidergreen.style('width', '100px')
   
 
-  ncolorsliderblue= createSlider(0, 255,0 )
- // ncolorsliderblue.position(10, 50)
-  ncolorsliderblue.style('width', '100px')
+//   ncolorsliderblue= createSlider(0, 255,0 )
+//  // ncolorsliderblue.position(10, 50)
+//   ncolorsliderblue.style('width', '100px')
 
 }
 
@@ -91,10 +91,12 @@ function draw() {
     let redValue = img.pixels[i + 0];
     let greenValue = img.pixels[i + 1];
     let blueValue = img.pixels[i + 2];
-let nredValue;
+    let alphaValue = img.pixels[i+3];
+let alphaChannel = ncolorsliderred.value();
     let maxColorValue = max(redValue, greenValue, blueValue)
 
 //exageration of each color
+nimg.pixels[i+3] = alphaChannel;
     if (maxColorValue == redValue) {
       nimg.pixels[i + 0] = exaggeration;
     } else if (maxColorValue == greenValue) {
