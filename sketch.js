@@ -63,21 +63,21 @@ function setup() { background(255,255,255);
 }
 
 //img.hide();
-function isSimilar(nred) {
+// function isSimilar(nred) {
 
-  rdiff= abs(255-red(nred))
-  gdiff= abs(255-green(nred))
-  bdiff= abs(255-blue(nred))
+//   rdiff= abs(255-red(nred))
+//   gdiff= abs(255-green(nred))
+//   bdiff= abs(255-blue(nred))
 
-  let val = ncolorsliderred.value(rdiff);
-let val2 = ncolorslidergreen.value(gdiff);
-let val3 = ncolorsliderblue.value(bdiff);
+//   let val = ncolorsliderred.value(rdiff);
+// let val2 = ncolorslidergreen.value(gdiff);
+// let val3 = ncolorsliderblue.value(bdiff);
 
   
-  if (rdiff <val && gdiff < val2 && bdiff < val3) {
-    return true
-  }
-  }
+//   if (rdiff <val && gdiff < val2 && bdiff < val3) {
+//     return true
+//   }
+//   }
 
 
 function draw() {
