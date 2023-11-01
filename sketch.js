@@ -46,17 +46,17 @@ function setup() { background(255,255,255);
 
 
   ncolorsliderred= createSlider(0, 255,0)
-  ncolorsliderred.position(10, 10)
-  ncolorsliderred.style('width', 'px')
+  //ncolorsliderred.position(10, 10)
+  ncolorsliderred.style('width', '100px')
 
   ncolorslidergreen= createSlider(0, 255,0)
-  ncolorslidergreen.position(10, 30)
-  ncolorslidergreen.style('width', 'px')
+ // ncolorslidergreen.position(10, 30)
+  ncolorslidergreen.style('width', '100px')
   
 
   ncolorsliderblue= createSlider(0, 255,0 )
-  ncolorsliderblue.position(10, 50)
-  ncolorsliderblue.style('width', 'px')
+ // ncolorsliderblue.position(10, 50)
+  ncolorsliderblue.style('width', '100px')
 
 }
 
