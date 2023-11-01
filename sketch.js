@@ -1,13 +1,21 @@
 let img;
 let nimg;
-let ncolorslider;
+let ncolorsliderred;
+let ncolorslidergreen;
+let ncolorsliderblue;
+let rdiff;
+let gdiff;
+let bdiff;
+
+let nred; 
+
 function preload() {
 img = loadImage("Mondrian.jpg");
 
 //https://ibb.co/XVS7crT
 }
 
-function setup() { background("black");
+function setup() { background(255,255,255);
   createCanvas(windowWidth, windowHeight);
   pixelDensity(1);
 
@@ -36,16 +44,41 @@ function setup() { background("black");
 
 
 
+  ncolorsliderred= createSlider(0, 255,0)
+  ncolorsliderred.position(10, 10)
+  ncolorsliderred.style('width', 'px')
+
+  ncolorslidergreen= createSlider(0, 255,0)
+  ncolorslidergreen.position(10, 30)
+  ncolorslidergreen.style('width', 'px')
   
+
+  ncolorsliderblue= createSlider(0, 255,0 )
+  ncolorsliderblue.position(10, 50)
+  ncolorsliderblue.style('width', 'px')
 
 }
 
 
+
+
+
+
 //img.hide();
+function isSimilar(nred) {
+
+  rdiff= abs(255-red(nred))
+  gdiff= abs(255-green(nred))
+  bdiff= abs(255-blue(nred))
+  
+  if (rdiff <val && gdiff < val && bdiff < val) {
+    return true
+  }
+  }
 
 
 function draw() {
-  background (0)
+  background (255,255,255)
  
   let exaggeration = map(mouseY, 0, height, 255, 0)
   nimg.loadPixels()
@@ -73,6 +106,15 @@ let nredValue;
    
       image(nimg, 0, 0) ;
       pop();
+
+
+ nred= color(205,54,44)
+
+ let val = ncolorsliderred.value(rdiff);
+ let val2 = ncolorslidergreen.value(gdiff);
+ let val3 = ncolorsliderblue.value(bdiff);
+   
+
 
 
 }
