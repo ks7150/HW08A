@@ -8,6 +8,9 @@ let rdiff;
 let gdiff;
 let bdiff;
 
+let val;
+let val2;
+let val3;
 let nred; 
 
 function preload() {
@@ -44,7 +47,6 @@ function setup() { background(255,255,255);
   nimg = img.get()
 
 
-
   ncolorsliderred= createSlider(0, 255,0)
   //ncolorsliderred.position(10, 10)
   ncolorsliderred.style('width', '100px')
@@ -60,19 +62,19 @@ function setup() { background(255,255,255);
 
 }
 
-
-
-
-
-
 //img.hide();
 function isSimilar(nred) {
 
   rdiff= abs(255-red(nred))
   gdiff= abs(255-green(nred))
   bdiff= abs(255-blue(nred))
+
+  let val = ncolorsliderred.value(rdiff);
+let val2 = ncolorslidergreen.value(gdiff);
+let val3 = ncolorsliderblue.value(bdiff);
+
   
-  if (rdiff <val && gdiff < val && bdiff < val) {
+  if (rdiff <val && gdiff < val2 && bdiff < val3) {
     return true
   }
   }
@@ -80,7 +82,8 @@ function isSimilar(nred) {
 
 function draw() {
   background (255,255,255)
- 
+
+  
   let exaggeration = map(mouseY, 0, height, 255, 0)
   nimg.loadPixels()
   for (let i = 0; i < nimg.pixels.length; i += 4) {
@@ -114,8 +117,5 @@ let nredValue;
  //let val = ncolorsliderred.value(rdiff);
  //let val2 = ncolorslidergreen.value(gdiff);
  //let val3 = ncolorsliderblue.value(bdiff);
-   
-
-
-
+  
 }
