@@ -3,6 +3,7 @@ let nimg;
 let ncolorsliderred;
 let ncolorslidergreen;
 let ncolorsliderblue;
+
 let rdiff;
 let gdiff;
 let bdiff;
@@ -82,21 +83,21 @@ function draw() {
  
   let exaggeration = map(mouseY, 0, height, 255, 0)
   nimg.loadPixels()
-  for (let i = 0; i < nimg.pixels.length; i += 6) {
+  for (let i = 0; i < nimg.pixels.length; i += 4) {
     // values from original image
     let redValue = img.pixels[i + 0];
-    let greenValue = img.pixels[i + 2];
-    let blueValue = img.pixels[i + 4];
+    let greenValue = img.pixels[i + 1];
+    let blueValue = img.pixels[i + 2];
 let nredValue;
     let maxColorValue = max(redValue, greenValue, blueValue)
 
 //exageration of each color
     if (maxColorValue == redValue) {
-      nimg.pixels[i + 2] = exaggeration;
+      nimg.pixels[i + 0] = exaggeration;
     } else if (maxColorValue == greenValue) {
-      nimg.pixels[i + 3] = exaggeration;
+      nimg.pixels[i + 1] = exaggeration;
     } else if (maxColorValue == blueValue) {
-      nimg.pixels[i + 10] = exaggeration;
+      nimg.pixels[i + 2] = exaggeration;
     }
   }
 
@@ -110,9 +111,9 @@ let nredValue;
 
  nred= color(205,54,44)
 
- let val = ncolorsliderred.value(rdiff);
- let val2 = ncolorslidergreen.value(gdiff);
- let val3 = ncolorsliderblue.value(bdiff);
+ //let val = ncolorsliderred.value(rdiff);
+ //let val2 = ncolorslidergreen.value(gdiff);
+ //let val3 = ncolorsliderblue.value(bdiff);
    
 
 
