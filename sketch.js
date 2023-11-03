@@ -1,17 +1,6 @@
 let img;
 let nimg;
 let ncolorsliderred;
-let ncolorslidergreen;
-let ncolorsliderblue;
-
-let rdiff;
-let gdiff;
-let bdiff;
-
-let val;
-let val2;
-let val3;
-let nred; 
 
 function preload() {
 img = loadImage("Mondrian.jpg");
@@ -43,7 +32,7 @@ function setup() { background(255,255,255);
   img.loadPixels();
   print("pixel array size: ", img.pixels.length)
 
-  //copying image
+
   nimg = img.get()
 
 
@@ -51,58 +40,37 @@ function setup() { background(255,255,255);
   //ncolorsliderred.position(10, 10)
   ncolorsliderred.style('width', '100px')
 
-//   ncolorslidergreen= createSlider(0, 255,0)
-//  // ncolorslidergreen.position(10, 30)
-//   ncolorslidergreen.style('width', '100px')
-  
 
-//   ncolorsliderblue= createSlider(0, 255,0 )
-//  // ncolorsliderblue.position(10, 50)
-//   ncolorsliderblue.style('width', '100px')
 
 }
 
-//img.hide();
-// function isSimilar(nred) {
-
-//   rdiff= abs(255-red(nred))
-//   gdiff= abs(255-green(nred))
-//   bdiff= abs(255-blue(nred))
-
-//   let val = ncolorsliderred.value(rdiff);
-// let val2 = ncolorslidergreen.value(gdiff);
-// let val3 = ncolorsliderblue.value(bdiff);
-
-  
-//   if (rdiff <val && gdiff < val2 && bdiff < val3) {
-//     return true
-//   }
-//   }
 
 
 function draw() {
   background (255,255,255)
 
   
-  let exaggeration = map(mouseY, 0, height, 255, 0)
+   let x;
   nimg.loadPixels()
   for (let i = 0; i < nimg.pixels.length; i += 4) {
-    // values from original image
-    let redValue = img.pixels[i + 0];
+  
+    
+    let redValue = img.pixels[i + 0]= x;
     let greenValue = img.pixels[i + 1];
     let blueValue = img.pixels[i + 2];
     let alphaValue = img.pixels[i+3];
 let alphaChannel = ncolorsliderred.value();
     let maxColorValue = max(redValue, greenValue, blueValue)
+    x = map(mouseY, 0, height, 255, 0)
 
-//exageration of each color
-nimg.pixels[i+3] = alphaChannel;
+
+nimg.pixels[i+1] = alphaChannel;
     if (maxColorValue == redValue) {
-      nimg.pixels[i + 0] = exaggeration;
+      nimg.pixels[i + 0] = 0;
     } else if (maxColorValue == greenValue) {
-      nimg.pixels[i + 1] = exaggeration;
+      nimg.pixels[i + 1] = 0;
     } else if (maxColorValue == blueValue) {
-      nimg.pixels[i + 2] = exaggeration;
+      nimg.pixels[i + 2] = 0;
     }
   }
 
@@ -116,8 +84,5 @@ nimg.pixels[i+3] = alphaChannel;
 
  nred= color(205,54,44)
 
- //let val = ncolorsliderred.value(rdiff);
- //let val2 = ncolorslidergreen.value(gdiff);
- //let val3 = ncolorsliderblue.value(bdiff);
   
 }
