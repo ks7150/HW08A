@@ -6,7 +6,7 @@ let xOff;
 let yOff;
 
 function preload() {
-  img = loadImage("Mondrian2.jpg");
+  img = loadImage("Mondrian.jpg");
 }
 
 function setup() {
