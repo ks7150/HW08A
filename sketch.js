@@ -1,88 +1,63 @@
 let img;
 let nimg;
 let ncolorsliderred;
+let transparencySlider;
+let xOff;
+let yOff;
 
 function preload() {
-img = loadImage("Mondrian.jpg");
-
-//https://ibb.co/XVS7crT
+  img = loadImage("Mondrian2.jpg");
 }
 
-function setup() { background(255,255,255);
+function setup() {
   createCanvas(windowWidth, windowHeight);
   pixelDensity(1);
 
-
-//resize
-  print("Original size: ", img.width, " x ", img.height);
-
-  if (img.width > width) {
-    img.resize(width, 0);
-  }
-  if (img.height > height) {
-    img.resize(0, height);
-  }
-  print("Scaled size: ", img.width, " x ", img.height);
-
+  // Resize the image to fit the canvas
+  img.resize(0, height);
+  
   xOff = (width - img.width) / 2;
   yOff = (height - img.height) / 2;
 
-
-
   img.loadPixels();
-  print("pixel array size: ", img.pixels.length)
+  nimg = img.get();
 
+  ncolorsliderred = createSlider(0, 255, 0); 
+  ncolorsliderred.style('width', '100px');
+  ncolorsliderred.position(10, 10);
 
-  nimg = img.get()
-
-
-  ncolorsliderred= createSlider(0, 255,255)
-  //ncolorsliderred.position(10, 10)
-  ncolorsliderred.style('width', '100px')
-
-
-
+  transparencySlider = createSlider(0, 255, 255); 
+  transparencySlider.style('width', '100px');
+  transparencySlider.position(10, 40);
 }
 
-
-
 function draw() {
-  background (255,255,255)
+  background(0);
 
-  
-   let x;
-  nimg.loadPixels()
+  let x;
+  nimg.loadPixels();
   for (let i = 0; i < nimg.pixels.length; i += 4) {
-  
-    
-    let redValue = img.pixels[i + 0]= x;
+    let redValue = img.pixels[i + 0];
     let greenValue = img.pixels[i + 1];
     let blueValue = img.pixels[i + 2];
-    let alphaValue = img.pixels[i+3];
-let alphaChannel = ncolorsliderred.value();
-    let maxColorValue = max(redValue, greenValue, blueValue)
-    x = map(mouseY, 0, height, 255, 0)
+    let alphaValue = img.pixels[i + 3];
 
-
-nimg.pixels[i+1] = alphaChannel;
-    if (maxColorValue == redValue) {
-      nimg.pixels[i + 0] = 0;
-    } else if (maxColorValue == greenValue) {
-      nimg.pixels[i + 1] = 0;
-    } else if (maxColorValue == blueValue) {
-      nimg.pixels[i + 2] = 0;
+    let redThreshold = ncolorsliderred.value();
+    
+    if (redValue > redThreshold) {
+      // Swap red and green values
+      nimg.pixels[i + 0] = greenValue; // Red
+      nimg.pixels[i + 1] = redValue;   // Green
     }
+    
+    // Apply transparency
+    nimg.pixels[i + 3] = transparencySlider.value();
   }
 
   nimg.updatePixels();
-    push();
-    translate(xOff, yOff);
-   
-      image(nimg, 0, 0) ;
-      pop();
 
-
- nred= color(205,54,44)
-
-  
+  push();
+  translate(xOff, yOff);
+  image(nimg, 0, 0);
+  pop();
 }
