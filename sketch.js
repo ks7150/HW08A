@@ -3,7 +3,7 @@ let nimg;
 let ncolorsliderred;
 
 function preload() {
-img = loadImage("Mondrian2.jpg");
+img = loadImage("Mondrian.jpg");
 
 //https://ibb.co/XVS7crT
 }
