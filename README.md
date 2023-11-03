@@ -1,1 +1,2 @@
 i tried to change the colors of The mondrian painting to a very vibrant color palatte something that was similar to the art created by Andy Warhol. On hovering the mouse over the screen, the colors of the painting change with the shift in the mouse position. The mouse color detects and changes the red pixels, while the slider changes the transparency of the green pixels. 
+On adding different images to this code, the same color effect was observed 
