@@ -1,6 +1,7 @@
 let img;
 let nimg;
 let ncolorsliderred;
+let ncolorsliderblue;
 let transparencySlider;
 let xOff;
 let yOff;
@@ -26,6 +27,10 @@ function setup() {
   ncolorsliderred.style('width', '100px');
   ncolorsliderred.position(10, 10);
 
+  ncolorsliderblue = createSlider(0, 255, 0); 
+  ncolorsliderblue.style('width', '100px');
+  ncolorsliderblue.position(10, 70);
+
   transparencySlider = createSlider(0, 255, 255); 
   transparencySlider.style('width', '100px');
   transparencySlider.position(10, 40);
@@ -43,11 +48,22 @@ function draw() {
     let alphaValue = img.pixels[i + 3];
 
     let redThreshold = ncolorsliderred.value();
+    let blueThreshold = ncolorsliderblue.value();
     
     if (redValue > redThreshold) {
       // Swap red and green values
       nimg.pixels[i + 0] = greenValue; // Red
       nimg.pixels[i + 1] = redValue;   // Green
+    } else if (blueValue > blueThreshold) {
+      // Swap blue and green values
+      nimg.pixels[i + 1] = blueValue; // Green
+      nimg.pixels[i + 2] = greenValue; // Blue
+    }else {
+      // To Restore the original color values
+      nimg.pixels[i + 0] = redValue;
+      nimg.pixels[i + 1] = greenValue;
+      nimg.pixels[i + 2] = blueValue;
+    }{
     }
     
     // Apply transparency
